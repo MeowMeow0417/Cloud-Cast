@@ -1,0 +1,31 @@
+Restricted Commercial License – Cloud Cast
+Copyright (c) 2025 Gilbert Cura
+
+Permission is hereby granted to individuals and organizations to use Cloud Cast (the "Software") for personal or commercial purposes, under the following conditions:
+
+1. **Permitted Use**
+   - You may use the Software in its original, unmodified form for personal or commercial purposes.
+   - Usage is restricted to the official deployment of the Software (e.g., hosted via Vercel).
+
+2. **Prohibited Use**
+   - You may not modify, adapt, reverse-engineer, or create derivative works based on the Software.
+   - You may not redistribute, resell, or rehost the Software or its source code in any form.
+   - You may not obscure, remove, or alter any author attribution or original branding.
+
+3. **Ownership**
+   - The Software is the intellectual property of the original author and is not open-source.
+   - No rights are granted to copy or use the source code except as expressly permitted above.
+
+4. **Deployment**
+   - The Software may only be used through its original deployment as provided by the author.
+   - Local execution or hosting on third-party platforms is strictly prohibited without prior written consent.
+
+5. **Liability Disclaimer**
+   - The Software is provided "as is", without warranty of any kind, express or implied.
+   - The author is not liable for any damages or losses resulting from the use or misuse of the Software.
+
+6. **Contact**
+   For licensing inquiries, permission requests, or collaborations, please contact:
+
+   Gilbert Cura
+   [Your Email or Portfolio URL]
