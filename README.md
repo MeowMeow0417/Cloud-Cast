@@ -24,7 +24,6 @@
 
 - Firebase-based Login/Signup
 - User preferences stored via AWS
-- Light/Dark mode toggle
 - PWA (Progressive Web App) support
 
 ## Deployment

@@ -1,5 +1,4 @@
-import { Calendar, Home, Cloud , Settings } from "lucide-react"
-import { useSidebar, SidebarTrigger } from "@/components/ui/sidebar"
+import { Home, Cloud , Settings } from "lucide-react"
 import { NavUser } from "./nav-user"
 
 import {
@@ -64,7 +63,6 @@ export function AppSidebar() {
             </SidebarMenu>
         </SidebarHeader>
       <SidebarContent>
-        <SidebarTrigger />
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
