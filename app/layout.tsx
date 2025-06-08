@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers"
 import Header from "@/components/layout/SiteHeader";
+
 import { Geist, Geist_Mono } from "next/font/google";
+
 import { ThemeProvider } from "@/components/theme-provider"
 import { SidebarProvider} from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/sideBar/app-sidebar"

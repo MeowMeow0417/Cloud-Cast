@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 const page = () => {
   return (
     <main className="flex items-center justify-center p-6">
-      <section className=''>
+      <section className='p-6'>
 
 
       </section>

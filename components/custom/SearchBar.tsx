@@ -17,7 +17,6 @@ const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [weatherData, setWeatherData] = useState<any | null>(null);
 
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
@@ -32,19 +31,24 @@ const SearchBar = () => {
       }
 
       try {
-        const res = await fetch(`/api/getLocation?city=${encodeURIComponent(trimmed)}`);
+        const res = await fetch(`/api/getLocation?q=${encodeURIComponent(trimmed)}`);
         if (!res.ok) throw new Error('Failed to fetch weather data');
         const data = await res.json();
         setWeatherData(data);
       } catch (err) {
         console.error(err);
-        setWeatherData(null);
+        setWeatherData({ error: true });
       }
     }, 500),
     []
   );
 
-  // Trigger debounced fetch when query changes
+  const handleSelectCity = (city: string) => {
+    setQuery('');
+    setWeatherData(null);
+    router.push(`/dashboard/city/${encodeURIComponent(city)}`);
+  };
+
   useEffect(() => {
     debouncedSearch(query);
   }, [query, debouncedSearch]);
@@ -59,10 +63,13 @@ const SearchBar = () => {
       />
 
       {weatherData && !weatherData.error && (
-        <div className="text-sm text-gray-700 border p-3 rounded shadow-sm bg-white">
+        <div
+          className="text-sm text-gray-700 border p-3 rounded shadow-sm bg-white cursor-pointer hover:bg-gray-100"
+          onClick={() => handleSelectCity(weatherData.name)}
+        >
           <p><strong>{weatherData.name}</strong> - {weatherData.sys.country}</p>
           <p>{weatherData.weather[0].description}</p>
-          <p>{weatherData.main.temp}</p>
+          <p>{weatherData.main.temp}°C</p>
         </div>
       )}
 

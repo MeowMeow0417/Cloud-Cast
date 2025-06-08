@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 // Handles GET requests to /api/getLocation?city=CityName
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const cityname = searchParams.get('city');
+  const cityname = searchParams.get('q');
 
   if (!cityname) {
     return NextResponse.json({ error: 'City is required' }, { status: 400 });

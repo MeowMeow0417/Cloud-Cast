@@ -7,36 +7,65 @@ import {
 } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 
+import { electrolize } from '@/styles/fonts'
+
 interface WeatherCardProps {
   weatherData: {
-    city: string;
-    temperature: number;
-    feelsLike: number;
-    condition: string;
-  };
+    name: string;
+    sys: {
+      country: string;
+    };
+    main: {
+      temp: number;
+      feels_like: number;
+    };
+    weather: {
+      description: string;
+    }[];
+  } | null;
 }
 
 const WeatherCard: FC<WeatherCardProps> = ({ weatherData }) => {
+
+  function switchingTextColor() {
+    return 'text-white dark:text-black';
+  }
+
+  function switchingBackgroundColor() {
+    return 'bg-black dark:bg-white';
+  }
+
+  if (!weatherData) {
+    return (
+      <Card className="p-8 text-center">
+        <CardContent>
+          <p className="text-gray-500">No weather data available.</p>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
-    <Card className="lg:w-[1000px] md:w-full rounded-md shadow-lg bg-black dark:bg-white p-8">
-      <CardContent className="grid grid-cols-3 text-white dark:text-black gap-10">
-        <div className="col-span-2 flex flex-col items-center justify-center">
-          <Label className="text-center">
-            <h2 className="text-4xl font-bold text-black dark:text-white">
-              {weatherData.city}
-            </h2>
-            <p className="text-gray-500">{weatherData.condition}</p>
-          </Label>
+    <Card className={`lg:w-[1000px] md:w-full rounded-md shadow-lg p-8 ${switchingBackgroundColor()}`}>
+      <CardContent className={` gap-10 flex flex-row justify-between items-center ${switchingTextColor()}`} >
+        <div className=" flex flex-col items-center text-center">
+
+            <Label className={`text-6xl font-semibold ${switchingTextColor()}`}>
+              {weatherData.name} - {weatherData.sys.country}
+            </Label>
+
+
         </div>
-        <div className="flex flex-col items-center text-center mt-4">
-          <Label>
-            <h1 className="text-8xl font-semibold text-black dark:text-white">
-              {Math.round(weatherData.temperature)}°C
-            </h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
-              Feels like {Math.round(weatherData.feelsLike)}°C
-            </p>
-          </Label>
+        <div className=" flex flex-col items-center text-center">
+
+            <Label className={`text-8xl font-extrabold ${switchingTextColor()} ${electrolize.className}`}>
+              {weatherData.main.temp}
+            </Label>
+            <Label className="mt-2 text-gray-600 dark:text-gray-400">
+              Feels like {weatherData.main.feels_like} - {weatherData.weather[0]?.description ?? 'Unknown'}
+            </Label>
+
+
         </div>
       </CardContent>
     </Card>
