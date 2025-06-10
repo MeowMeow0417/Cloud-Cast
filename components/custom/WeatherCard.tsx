@@ -13,6 +13,7 @@ interface WeatherCardProps {
   weatherData: {
     name: string;
     sys: {
+      state: string;
       country: string;
     };
     main: {
@@ -51,18 +52,22 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData }) => {
         <div className=" flex flex-col items-center text-center">
 
             <Label className={`text-6xl font-semibold ${switchingTextColor()}`}>
-              {weatherData.name} - {weatherData.sys.country}
+              {weatherData.name}
+              {weatherData.sys.state ? ` - ${weatherData.sys.state}` : ''}
+              , {weatherData.sys.country}
             </Label>
+
 
 
         </div>
         <div className=" flex flex-col items-center text-center">
 
-            <Label className={`text-8xl font-extrabold ${switchingTextColor()} ${electrolize.className}`}>
-              {weatherData.main.temp}
+            <Label className={`text-6xl font-extrabold ${switchingTextColor()} ${electrolize.className}`}>
+              {/* {weatherData.main.temp} */}
             </Label>
+
             <Label className="mt-2 text-gray-600 dark:text-gray-400">
-              Feels like {weatherData.main.feels_like} - {weatherData.weather[0]?.description ?? 'Unknown'}
+              {/* Feels like {weatherData.main.feels_like} - {weatherData.weather[0]?.description ?? 'Unknown'} */}
             </Label>
 
 
