@@ -1,18 +1,15 @@
 import { NextResponse, NextRequest } from "next/server";
 
-// Handles GET requests to /api/getWeatherData?name=...&country=...
+// Handles GET requests to /api/getWeatherData?lat=...&lon=...
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const name = searchParams.get("name");
-  const country = searchParams.get("country");
+  const lat = searchParams.get("lat");
+  const lon = searchParams.get("lon");
 
-  console.log("Received city query:", { name, country });
+  console.log("Received coordinates:", { lat, lon });
 
-  if (!name || !country) {
-    return NextResponse.json(
-      { error: "Missing city name or country code" },
-      { status: 400 }
-    );
+  if (!lat || !lon) {
+    return NextResponse.json({ error: "Missing coordinates" }, { status: 400 });
   }
 
   const APIkey = process.env.WEATHER_API_KEY;
@@ -22,9 +19,8 @@ export const GET = async (req: NextRequest) => {
   }
 
   try {
-    const query = `${encodeURIComponent(name)},${encodeURIComponent(country)}`;
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${APIkey}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`
     );
 
     if (!response.ok) {
@@ -38,9 +34,6 @@ export const GET = async (req: NextRequest) => {
     return NextResponse.json(data);
   } catch (error) {
     console.error("Weather API fetch error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 };

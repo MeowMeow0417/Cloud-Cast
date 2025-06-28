@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers"
 import Header from "@/components/layout/SiteHeader";
-
 import { Geist, Geist_Mono } from "next/font/google";
-
 import { ThemeProvider } from "@/components/theme-provider"
-import { SidebarProvider} from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/sideBar/app-sidebar"
+
+
 import "@/styles/globals.css";
 
 const geistSans = Geist({
@@ -32,15 +30,13 @@ export default async function RootLayout({
 }>) {
 
   const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <SidebarProvider defaultOpen={defaultOpen}>
-        <AppSidebar />
+
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -52,7 +48,6 @@ export default async function RootLayout({
               {children}
             </div>
           </ThemeProvider>
-      </SidebarProvider>
 
       </body>
     </html>

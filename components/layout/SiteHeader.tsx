@@ -1,26 +1,15 @@
-'use client'
-
-import { SidebarTrigger } from '../ui/sidebar'
 import {DarkMode} from '../custom/dark-mode'
-import { Separator } from '../ui/separator'
 import SearchBar from '../custom/SearchBar'
+import AuthButtons from '../auth/AuthButtons'
 
 
 const Header = () => {
   return (
-   <header className="flex flex-row py-2 items-center justify-between">
-      <div className="flex w-full items-center gap-1 px-2 lg:gap-2 ">
-        <SidebarTrigger />
-        <Separator
-          orientation="vertical"
-          className="mx-2 data-[orientation=vertical]:h-4"
-        />
-
-        <div className="ml-auto flex items-center gap-2">
-          <SearchBar/>
-
-          <DarkMode />
-        </div>
+    <header className="fixed top-0 left-0 w-full z-50 flex flex-row py-2 items-center bg-background/80 backdrop-blur">
+      <div className="flex w-full items-center justify-between px-4 gap-4">
+        <h1 className="text-lg font-bold">CloudCast</h1>
+        <SearchBar />
+        <AuthButtons />
       </div>
     </header>
   )

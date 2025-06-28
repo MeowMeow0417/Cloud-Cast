@@ -7,25 +7,20 @@ import { notFound } from 'next/navigation';
 
 const CityPage = () => {
   const params = useParams();
-  const cityName = params.cityName as string[]; // this will be an array like ['Paris', 'FR']
-
+  const cityName = params.cityName as string[];
   const [weatherData, setWeatherData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!cityName || cityName.length !== 2) {
-      notFound(); // Invalid route structure
+      notFound();
       return;
     }
-
-    const [name, country] = cityName;
-
-    console.log(`Fetching weather data for city: ${name}, country: ${country}`);
-    console.log('weatherData:', weatherData);
+    const [lat, lon] = cityName;
 
     const fetchWeatherData = async () => {
       try {
-        const res = await fetch(`/api/getWeatherData?name=${name}&country=${country}`);
+        const res = await fetch(`/api/getWeatherData?lat=${lat}&lon=${lon}`);
         if (!res.ok) throw new Error('Failed to fetch weather data');
         const data = await res.json();
         setWeatherData(data);
@@ -41,13 +36,13 @@ const CityPage = () => {
   }, [cityName]);
 
   return (
-    <section className="flex flex-col items-center justify-center p-6">
+    <section className="flex flex-1 min-h-screen flex-col items-center justify-center p-6">
       {!loading && weatherData ? (
         <WeatherCard weatherData={weatherData} />
       ) : (
         <p className="text-center text-gray-500">Loading weather data...</p>
       )}
-      <pre>{JSON.stringify(weatherData, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(weatherData, null, 2)}</pre> */}
     </section>
   );
 };
