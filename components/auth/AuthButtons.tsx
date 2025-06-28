@@ -3,15 +3,18 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 
+
+// TODO: implement Auth, have proper Profile page
 const AuthButtons = () => {
   return (
     <header>
         <div className="flex items-center gap-2">
-            <Button variant="outline" className="text-sm">
+
+            {/* <Button variant="outline" className="text-sm">
             Sign In
-            </Button>
+            </Button> */}
             <Button className="text-sm">
-            Sign Up
+            Profile
             </Button>
         </div>
     </header>

@@ -70,7 +70,7 @@ const SearchBar = () => {
  const handleSelectCity = (city: any) => {
     const lat = city.lat;
     const lon = city.lon;
-    router.push(`/dashboard/city/${lat}/${lon}`);
+    router.push(`/home/city/${lat}/${lon}`);
   };
 
 
@@ -86,14 +86,9 @@ const SearchBar = () => {
             value={query}
             onChange={handleChange}
             placeholder="Search "
-            className="w-3xs lg:w-3xl xl:w-3xs rounded-r-none focus:none"
+            className="w-3xs"
           />
-          <Button
-            variant={'secondary'}
-            size={'icon'}
-            className='rounded-l-none border-1'
-              ><Search/>
-          </Button>
+
         </div>
 
 

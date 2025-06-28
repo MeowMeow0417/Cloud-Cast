@@ -29,7 +29,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const cookieStore = await cookies()
 
   return (
     <html lang="en" suppressHydrationWarning>

@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import WeatherCard from "@/components/custom/WeatherCard";
+import WeatherStats from '@/components/custom/WeatherStats';
 import { notFound } from 'next/navigation';
 
 const CityPage = () => {
@@ -36,7 +37,7 @@ const CityPage = () => {
   }, [cityName]);
 
   return (
-    <section className="flex flex-1 min-h-screen flex-col items-center justify-center p-6">
+    <section className="flex flex-1 min-h-screen flex-col items-center justify-center">
       {!loading && weatherData ? (
         <WeatherCard weatherData={weatherData} />
       ) : (
