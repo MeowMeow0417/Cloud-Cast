@@ -44,7 +44,7 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData }) => {
               Feels like: {Math.round(weatherData.main.feels_like)}°
             </Label>
           </div>
-          <div>
+          <div className='flex flex-col items-center'>
             <Label className="text-5xl font-semibold text-start">
             {weatherData.name}
             {weatherData.sys.state ? ` - ${weatherData.sys.state}` : ''}

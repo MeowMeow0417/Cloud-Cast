@@ -6,8 +6,6 @@ export const GET = async (req: NextRequest) => {
   const lat = searchParams.get("lat");
   const lon = searchParams.get("lon");
 
-  console.log("Received coordinates:", { lat, lon });
-
   if (!lat || !lon) {
     return NextResponse.json({ error: "Missing coordinates" }, { status: 400 });
   }

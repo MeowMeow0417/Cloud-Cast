@@ -10,6 +10,7 @@ const Header = () => {
         <h1 className="text-lg font-bold">CloudCast</h1>
         <SearchBar />
         <AuthButtons />
+        {/* <DarkMode /> */}
       </div>
     </header>
   )

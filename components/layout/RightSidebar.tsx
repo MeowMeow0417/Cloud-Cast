@@ -39,10 +39,10 @@ const RightSidebar = () => {
       {breadItems.map((item) => (
         <Label
           key={item.id}
-          className={`cursor-pointer px-2 py-1 rounded transition-colors text-md ${
+          className={`cursor-pointer px-2 py-1 rounded transition-colors text-md font-bold ${
             active === item.id
-              ? 'bg-black text-white dark:bg-white dark:text-black'
-              : 'text-gray-500 hover:text-black dark:hover:text-white'
+              ? 'text-primary'
+              : 'text-muted-foreground hover:text-primary'
           }`}
           onClick={() => {
             document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
