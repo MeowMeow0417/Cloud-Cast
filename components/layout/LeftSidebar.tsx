@@ -17,16 +17,16 @@ const LeftSidebar = () => {
 ]
 
   return (
-    <aside className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col items-start justify-between z-50 gap-6 p-4">
+    <aside className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col items-start justify-between z-50 gap-2 p-4">
         {navItems.map((item) => {
           const isActive = pathname === item.href
           return (
             <Link
             key={item.name}
             href={item.href}
-            className={`flex items-center gap-2 px-3 py-2 rounded transition-colors ${
+            className={`flex items-center rounded transition-colors ${
               isActive
-                ? 'bg-primary text-primary-foreground'
+                ? 'text-primary'
                 : 'text-muted-foreground hover:text-primary'
             }`}
             aria-label={item.name}

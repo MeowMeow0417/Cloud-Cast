@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import WeatherCard from "@/components/custom/WeatherCard";
 import WeatherStats from '@/components/custom/WeatherStats';
+import DailyForecast from '@/components/custom/DailyForecast';
 import { notFound } from 'next/navigation';
 
 const CityPage = () => {
@@ -37,9 +38,19 @@ const CityPage = () => {
   }, [cityName]);
 
   return (
-    <section className="flex flex-1 min-h-screen flex-col items-center justify-center">
+    <section className="flex flex-1 min-h-screen flex-col items-center justify-center ">
       {!loading && weatherData ? (
-        <WeatherCard weatherData={weatherData} />
+        <div>
+          <section id="forecast">
+            <WeatherCard weatherData={weatherData} />
+          </section>
+          <section id="daily">
+            <DailyForecast />
+          </section>
+          <section id="stats">
+            <WeatherStats />
+          </section>
+        </div>
       ) : (
         <p className="text-center text-gray-500">Loading weather data...</p>
       )}

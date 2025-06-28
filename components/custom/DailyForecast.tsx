@@ -2,7 +2,10 @@ import React from 'react'
 
 const DailyForecast = () => {
   return (
-    <div>DailyForecast</div>
+    <main className='flex items-center justify-center h-full min-h-screen w-full'>
+
+
+    </main>
   )
 }
 
