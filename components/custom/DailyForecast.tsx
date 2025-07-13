@@ -10,107 +10,126 @@ interface DailyForecastProps {
 const DailyForecast: FC<DailyForecastProps> = ({}) => {
   return (
     <main className='flex items-center justify-center h-full min-h-screen w-full'>
-      <div className='flex flex-row gap-4'>
-        <Card className='max-h-5xl'>
-          <CardContent className=" rounded-md p-8 flex flex-col items-center gap-2">
-            <Label className="text-2xl font-semibold text-blue-700 mb-2 tracking-wide">Today</Label>
-            <Label className="text-6xl font-extrabold text-gray-800 mb-1">27°</Label>
-            <Label className="text-lg font-light text-gray-500 mb-2">Feels Like: 32°</Label>
-            <Label className="text-xl font-medium capitalize text-blue-600 mb-1 flex items-center gap-2">
+      <div className='flex flex-row '>
 
+        <Card className="shadow-xl rounded-none max-w-xs h-screen w-3xs flex items-center justify-center">
+          <CardContent className="p-8 flex flex-col items-center gap-3">
+            <Label className="text-lg font-semibold tracking-wider uppercase">Today</Label>
+
+            <Label className="text-6xl font-extrabold leading-tight">27°</Label>
+            <Label className="text-sm  font-light">Feels like 32°</Label>
+
+            <Label className="text-md font-medium capitalize">
+              Overcast Clouds
             </Label>
-            <div className="flex flex-row gap-4 mt-2">
+
+            <div className="flex flex-row gap-8 mt-3">
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-500 font-semibold">10%</span>
-                <span className="text-xs text-gray-400">Rain</span>
+                <span className="text-base font-semibold ">10%</span>
+                <span className="text-xs ">Rain</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-700 font-semibold">65%</span>
-                <span className="text-xs text-gray-400">Humidity</span>
+                <span className="text-base font-semibold ">65%</span>
+                <span className="text-xs ">Humidity</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className='max-h-5xl'>
-          <CardContent className=" rounded-md p-8 flex flex-col items-center gap-2">
-            <Label className="text-2xl font-semibold text-blue-700 mb-2 tracking-wide">Today</Label>
-            <Label className="text-6xl font-extrabold text-gray-800 mb-1">27°</Label>
-            <Label className="text-lg font-light text-gray-500 mb-2">Feels Like: 32°</Label>
-            <Label className="text-xl font-medium capitalize text-blue-600 mb-1 flex items-center gap-2">
+<Card className="shadow-xl rounded-none max-w-xs h-screen w-3xs flex items-center justify-center">
+          <CardContent className="p-8 flex flex-col items-center gap-3">
+            <Label className="text-lg font-semibold tracking-wider uppercase">Today</Label>
 
+            <Label className="text-6xl font-extrabold leading-tight">27°</Label>
+            <Label className="text-sm  font-light">Feels like 32°</Label>
+
+            <Label className="text-md font-medium capitalize">
+              Overcast Clouds
             </Label>
-            <div className="flex flex-row gap-4 mt-2">
+
+            <div className="flex flex-row gap-8 mt-3">
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-500 font-semibold">10%</span>
-                <span className="text-xs text-gray-400">Rain</span>
+                <span className="text-base font-semibold ">10%</span>
+                <span className="text-xs ">Rain</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-700 font-semibold">65%</span>
-                <span className="text-xs text-gray-400">Humidity</span>
+                <span className="text-base font-semibold ">65%</span>
+                <span className="text-xs ">Humidity</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className='max-h-5xl'>
-          <CardContent className=" rounded-md p-8 flex flex-col items-center gap-2">
-            <Label className="text-2xl font-semibold text-blue-700 mb-2 tracking-wide">Today</Label>
-            <Label className="text-6xl font-extrabold text-gray-800 mb-1">27°</Label>
-            <Label className="text-lg font-light text-gray-500 mb-2">Feels Like: 32°</Label>
-            <Label className="text-xl font-medium capitalize text-blue-600 mb-1 flex items-center gap-2">
+<Card className="shadow-xl rounded-none max-w-xs h-screen w-3xs flex items-center justify-center">
+          <CardContent className="p-8 flex flex-col items-center gap-3">
+            <Label className="text-lg font-semibold tracking-wider uppercase">Today</Label>
 
+            <Label className="text-6xl font-extrabold leading-tight">27°</Label>
+            <Label className="text-sm  font-light">Feels like 32°</Label>
+
+            <Label className="text-md font-medium capitalize">
+              Overcast Clouds
             </Label>
-            <div className="flex flex-row gap-4 mt-2">
+
+            <div className="flex flex-row gap-8 mt-3">
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-500 font-semibold">10%</span>
-                <span className="text-xs text-gray-400">Rain</span>
+                <span className="text-base font-semibold ">10%</span>
+                <span className="text-xs ">Rain</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-700 font-semibold">65%</span>
-                <span className="text-xs text-gray-400">Humidity</span>
+                <span className="text-base font-semibold ">65%</span>
+                <span className="text-xs ">Humidity</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className='max-h-5xl'>
-          <CardContent className=" rounded-md p-8 flex flex-col items-center gap-2">
-            <Label className="text-2xl font-semibold text-blue-700 mb-2 tracking-wide">Today</Label>
-            <Label className="text-6xl font-extrabold text-gray-800 mb-1">27°</Label>
-            <Label className="text-lg font-light text-gray-500 mb-2">Feels Like: 32°</Label>
-            <Label className="text-xl font-medium capitalize text-blue-600 mb-1 flex items-center gap-2">
 
+<Card className="shadow-xl rounded-none max-w-xs h-screen w-3xs flex items-center justify-center">
+          <CardContent className="p-8 flex flex-col items-center gap-3">
+            <Label className="text-lg font-semibold tracking-wider uppercase">Today</Label>
+
+            <Label className="text-6xl font-extrabold leading-tight">27°</Label>
+            <Label className="text-sm  font-light">Feels like 32°</Label>
+
+            <Label className="text-md font-medium capitalize">
+              Overcast Clouds
             </Label>
-            <div className="flex flex-row gap-4 mt-2">
+
+            <div className="flex flex-row gap-8 mt-3">
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-500 font-semibold">10%</span>
-                <span className="text-xs text-gray-400">Rain</span>
+                <span className="text-base font-semibold ">10%</span>
+                <span className="text-xs ">Rain</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-700 font-semibold">65%</span>
-                <span className="text-xs text-gray-400">Humidity</span>
+                <span className="text-base font-semibold ">65%</span>
+                <span className="text-xs ">Humidity</span>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className='max-h-5xl'>
-          <CardContent className=" rounded-md p-8 flex flex-col items-center gap-2">
-            <Label className="text-2xl font-semibold text-blue-700 mb-2 tracking-wide">Today</Label>
-            <Label className="text-6xl font-extrabold text-gray-800 mb-1">27°</Label>
-            <Label className="text-lg font-light text-gray-500 mb-2">Feels Like: 32°</Label>
-            <Label className="text-xl font-medium capitalize text-blue-600 mb-1 flex items-center gap-2">
 
+
+<Card className="shadow-xl rounded-none max-w-xs h-screen w-3xs flex items-center justify-center">
+          <CardContent className="p-8 flex flex-col items-center gap-3">
+            <Label className="text-lg font-semibold tracking-wider uppercase">Today</Label>
+
+            <Label className="text-6xl font-extrabold leading-tight">27°</Label>
+            <Label className="text-sm  font-light">Feels like 32°</Label>
+
+            <Label className="text-md font-medium capitalize">
+              Overcast Clouds
             </Label>
-            <div className="flex flex-row gap-4 mt-2">
+
+            <div className="flex flex-row gap-8 mt-3">
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-500 font-semibold">10%</span>
-                <span className="text-xs text-gray-400">Rain</span>
+                <span className="text-base font-semibold ">10%</span>
+                <span className="text-xs ">Rain</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-base text-blue-700 font-semibold">65%</span>
-                <span className="text-xs text-gray-400">Humidity</span>
+                <span className="text-base font-semibold ">65%</span>
+                <span className="text-xs ">Humidity</span>
               </div>
             </div>
           </CardContent>

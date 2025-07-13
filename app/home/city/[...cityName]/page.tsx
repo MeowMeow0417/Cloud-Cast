@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import WeatherCard from "@/components/custom/WeatherCard";
 import WeatherStats from '@/components/custom/WeatherStats';
 import DailyForecast from '@/components/custom/DailyForecast';
+import FloatingCard from '@/components/motion/FloatingCard';
 import { notFound } from 'next/navigation';
 
 const CityPage = () => {
@@ -37,19 +38,24 @@ const CityPage = () => {
     fetchWeatherData();
   }, [cityName]);
 
+
   return (
     <section className="flex flex-1 min-h-screen flex-col items-center justify-center ">
       {!loading && weatherData ? (
         <div>
-          <section id="forecast">
-            <WeatherCard weatherData={weatherData} />
+          <section id="forecast" className="w-full">
+              <FloatingCard>
+                <WeatherCard weatherData={weatherData} />
+              </FloatingCard>
           </section>
+
           <section id="daily">
             <DailyForecast />
           </section>
           <section id="stats">
             <WeatherStats />
-          </section>
+        </section>
+
         </div>
       ) : (
         <p className="text-center text-gray-500">Loading weather data...</p>

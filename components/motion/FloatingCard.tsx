@@ -1,0 +1,40 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+
+export default function FloatingCard({ children }: any) {
+  const [isSticky, setIsSticky] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState(0)
+
+  useEffect(() => {
+    if (ref.current) {
+      setHeight(ref.current.offsetHeight)
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      setIsSticky(scrollY > 500)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <>
+      {isSticky && (
+        <div style={{ height }} />
+      )}
+      <div
+        ref={ref}
+        className={`
+          transition-all duration-300
+          ${isSticky ? "fixed -top-60 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl" : "relative"}
+        `}
+      >
+        {children}
+      </div>
+    </>
+  )
+}

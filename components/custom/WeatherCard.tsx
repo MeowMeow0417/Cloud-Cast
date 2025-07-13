@@ -34,10 +34,10 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData }) => {
 
   return (
     <main className='flex items-center justify-center h-full min-h-screen w-full'>
-      <Card className="w-full max-w-4xl rounded-md shadow-lg p-8 border-none">
+      <Card className="w-full max-w-4xl rounded-md shadow-lg p-8 ">
         <CardContent className="grid grid-cols-2 items-center text-center gap-4 ">
           <div className="flex flex-col items-center">
-            <Label className="text-vlg font-extrabold">
+            <Label className="text-5xl font-extrabold">
               {Math.round(weatherData.main.temp)}°
             </Label>
             <Label className="text-lg font-medium">
@@ -47,8 +47,7 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData }) => {
           <div className='flex flex-col items-center'>
             <Label className="text-5xl font-semibold text-start">
             {weatherData.name}
-            {weatherData.sys.state ? ` - ${weatherData.sys.state}` : ''}
-              , {weatherData.sys.country}
+
             </Label>
 
 

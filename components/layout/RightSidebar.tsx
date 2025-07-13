@@ -6,7 +6,7 @@ import { Label } from '../ui/label'
 const breadItems = [
   { name: 'FORECAST', id: 'forecast' },
   { name: 'DAILY', id: 'daily' },
-  { name: 'STATS', id: 'stats' }
+  { name: 'STATS', id: 'stats' },
 ]
 
 const RightSidebar = () => {
