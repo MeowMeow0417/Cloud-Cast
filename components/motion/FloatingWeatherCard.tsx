@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import WeatherCard from "../custom/WeatherCard"
 
-export default function FloatingCard({ children }: any) {
+export default function FloatingWeatherCard({ weatherData }: any) {
   const [isSticky, setIsSticky] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState(0)
@@ -14,7 +15,7 @@ export default function FloatingCard({ children }: any) {
 
     const handleScroll = () => {
       const scrollY = window.scrollY
-      setIsSticky(scrollY > 500)
+      setIsSticky(scrollY > 600)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -33,7 +34,7 @@ export default function FloatingCard({ children }: any) {
           ${isSticky ? "fixed -top-60 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl" : "relative"}
         `}
       >
-        {children}
+        <WeatherCard weatherData={weatherData} variant={isSticky ? "floating" : "default"} />
       </div>
     </>
   )

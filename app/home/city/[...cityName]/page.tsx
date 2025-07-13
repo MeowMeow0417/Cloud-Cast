@@ -2,10 +2,9 @@
 
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import WeatherCard from "@/components/custom/WeatherCard";
 import WeatherStats from '@/components/custom/WeatherStats';
 import DailyForecast from '@/components/custom/DailyForecast';
-import FloatingCard from '@/components/motion/FloatingCard';
+import FloatingWeatherCard from '@/components/motion/FloatingWeatherCard';
 import { notFound } from 'next/navigation';
 
 const CityPage = () => {
@@ -43,10 +42,8 @@ const CityPage = () => {
     <section className="flex flex-1 min-h-screen flex-col items-center justify-center ">
       {!loading && weatherData ? (
         <div>
-          <section id="forecast" className="w-full">
-              <FloatingCard>
-                <WeatherCard weatherData={weatherData} />
-              </FloatingCard>
+          <section id="forecast" >
+              <FloatingWeatherCard weatherData={weatherData} />
           </section>
 
           <section id="daily">
