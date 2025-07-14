@@ -1,38 +1,38 @@
 import { NextResponse, NextRequest } from "next/server";
 
-// Handles GET requests to /api/LocationSearch?city=CityName
+// Handle GET requests to /api/weather
 export const GET = async (req: NextRequest) => {
-  // Extract search params from the request URL
+  // Extract query parameters from the request URL
   const { searchParams } = new URL(req.url);
   const city = searchParams.get('city');
 
-  // Return error if no city is provided
+  // Validate that a city was provided
   if (!city) {
     return NextResponse.json({ error: 'City is required' }, { status: 400 });
   }
 
-  // Read API key from environment variables
+  // Get the weather API key from environment variables
   const apiKey = process.env.WEATHER_API_KEY;
 
-  try {
-    // Call the WeatherAPI search endpoint
+  try{
+     // Fetch weather data from the external WeatherAPI for the next 3 days
     const response = await fetch(
-      `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${city}`
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5&aqi=yes&alerts=no`
     );
 
-    // Handle non-200 HTTP responses
+     // Handle failure from the external API
     if (!response.ok) {
       return NextResponse.json(
-        { error: 'Failed to fetch weather data' },
-        { status: response.status }
+        { error: 'Failed to fetch weather' },
+        { status: 500 }
       );
     }
 
-    // Parse and return weather data
+    // Parse the API response and return it as JSON
     const data = await response.json();
     return NextResponse.json(data);
 
-  } catch (error) {
+  } catch(error){
     // Handle unexpected errors (e.g., network issues)
     console.error('Weather API fetch error:', error);
     return NextResponse.json(

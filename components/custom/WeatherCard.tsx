@@ -6,19 +6,24 @@ import { Label } from "@/components/ui/label"
 
 interface WeatherCardProps {
   weatherData: {
-    name: string;
-    sys: {
-      state?: string;
+    location: {
+      name: string;
+      region: string;
       country: string;
+      localtime: string;
     };
-    main: {
-      temp: number;
-      feels_like: number;
+    current: {
+      temp_c: number;
+      feelslike_c: number;
+      condition: {
+        text: string;
+        icon: string;
+        code: number;
+      };
+      last_updated: string;
     };
-    weather: {
-      description: string;
-    }[];
-  } | null;
+    last_updated: string;
+  };
   variant?: 'default' | 'floating';
 }
 
@@ -35,24 +40,24 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData, variant }) => {
 
   return (
     <main className='flex items-center justify-center h-full min-h-screen w-full'>
-      <Card className={`w-full ${variant === 'floating' ? 'max-w-xl p-4' : 'max-w-4xl p-8'} rounded-md shadow-lg`}>
-        <CardContent className={`grid grid-cols-2 items-center text-center ${variant === 'floating' ? 'gap-4' : 'gap-8'}`}>
+      <Card className={`w-full ${variant === 'floating' ? 'max-w-xl p-4' : 'max-w-5xl p-8 border-0'} shadow-lg`}>
+        <CardContent className={`flex flex-row items-center text-center ${variant === 'floating' ? 'gap-4' : 'gap-20'}`}>
           <div className="flex flex-col items-center">
-            <Label className={`${variant === 'floating' ? 'text-3xl' : 'text-vlg'} font-extrabold`}>
-              {Math.round(weatherData.main.temp)}°
+            <Label className={`${variant === 'floating' ? 'text-3xl' : 'text-10xl'} font-extrabold`}>
+              {weatherData.current.temp_c}°
             </Label>
             <Label className={`${variant === 'floating' ? 'text-sm' : 'text-lg'} font-medium`}>
-              Feels like: {Math.round(weatherData.main.feels_like)}°
+              Feels like: {weatherData.current.feelslike_c}°
             </Label>
           </div>
 
-          <div className="flex flex-col items-start">
-            <Label className={`${variant === 'floating' ? 'text-2xl' : 'text-5xl'} font-semibold`}>
-              {weatherData.name}
+          <div className="flex flex-col ">
+            <Label className={`${variant === 'floating' ? 'text-2xl' : 'text-5xl'} font-semibold padding`}>
+              {weatherData.location.name}
             </Label>
 
             <Label className={`mt-1 ${variant === 'floating' ? 'text-xs' : 'text-gray-600'} dark:text-gray-400`}>
-              {weatherData.weather[0]?.description ?? 'Unknown'}
+              {weatherData.current.condition.text ?? 'Unknown'}
             </Label>
           </div>
         </CardContent>

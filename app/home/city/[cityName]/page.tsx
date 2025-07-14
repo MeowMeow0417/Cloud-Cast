@@ -9,20 +9,15 @@ import { notFound } from 'next/navigation';
 
 const CityPage = () => {
   const params = useParams();
-  const cityName = params.cityName as string[];
+  const cityName = params.cityName as string;
   const [weatherData, setWeatherData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!cityName || cityName.length !== 2) {
-      notFound();
-      return;
-    }
-    const [lat, lon] = cityName;
 
     const fetchWeatherData = async () => {
       try {
-        const res = await fetch(`/api/getWeatherData?lat=${lat}&lon=${lon}`);
+        const res = await fetch(`/api/getCurrentWeather?city=${cityName}`);
         if (!res.ok) throw new Error('Failed to fetch weather data');
         const data = await res.json();
         setWeatherData(data);
@@ -39,17 +34,17 @@ const CityPage = () => {
 
 
   return (
-    <section className="flex flex-1 min-h-screen flex-col items-center justify-center ">
+    <section className="flex flex-1 min-h-screen flex-col items-center justify-center snap-y snap-mandatory overflow-y-scroll h-screen">
       {!loading && weatherData ? (
         <div>
-          <section id="forecast" >
+          <section id="forecast" className="snap-start h-screen" >
               <FloatingWeatherCard weatherData={weatherData} />
           </section>
 
-          <section id="daily">
+          <section id="daily" className="snap-center h-screen">
             <DailyForecast />
           </section>
-          <section id="stats">
+          <section id="stats" className="snap-end h-screen">
             <WeatherStats />
         </section>
 
