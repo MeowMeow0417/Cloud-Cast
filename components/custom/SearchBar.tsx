@@ -26,11 +26,12 @@ const SearchBar = () => {
     }
   }
 
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" >
-          Search City... <Search className="h-5 w-5" />
+          <Search className="h-5 w-5" />
         </Button>
       </DialogTrigger>
 

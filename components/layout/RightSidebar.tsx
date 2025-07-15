@@ -35,7 +35,7 @@ const RightSidebar = () => {
   }, []);
 
   return (
-    <aside className='fixed right-0 top-1/2 -translate-y-1/2 flex flex-col items-end z-50 gap-2 p-4'>
+    <aside className='fixed right-0 top-1/2 -translate-y-1/2 flex flex-col items-end z-50 p-4'>
       {breadItems.map((item) => (
         <Label
           key={item.id}
@@ -44,6 +44,7 @@ const RightSidebar = () => {
               ? 'text-primary'
               : 'text-muted-foreground hover:text-primary'
           }`}
+
           onClick={() => {
             document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
           }}

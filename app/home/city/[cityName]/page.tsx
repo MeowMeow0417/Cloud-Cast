@@ -34,7 +34,7 @@ const CityPage = () => {
 
 
   return (
-    <section className="flex flex-1 min-h-screen flex-col items-center justify-center snap-y snap-mandatory overflow-y-scroll h-screen">
+    <section className="flex flex-1 min-h-screen flex-col items-center justify-center ">
       {!loading && weatherData ? (
         <div>
           <section id="forecast" className="snap-start h-screen" >

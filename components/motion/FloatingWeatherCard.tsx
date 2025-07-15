@@ -31,7 +31,7 @@ export default function FloatingWeatherCard({ weatherData }: any) {
         ref={ref}
         className={`
           transition-all duration-300
-          ${isSticky ? "fixed -top-60 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl" : "relative"}
+          ${isSticky ? "fixed -top-60 left-1/2 -translate-x-1/2 z-25 w-full max-w-4xl" : "relative"}
         `}
       >
         <WeatherCard weatherData={weatherData} variant={isSticky ? "floating" : "default"} />
