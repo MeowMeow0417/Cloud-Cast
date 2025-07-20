@@ -1,6 +1,7 @@
 import React from "react";
 import LeftSidebar from "@/components/layout/LeftSidebar";
 import RightSidebar from "@/components/layout/RightSidebar";
+import QueryProvider from "@/components/provdier/QueryProvider";
 
 
 export default function DashboardLayout({
@@ -12,8 +13,9 @@ export default function DashboardLayout({
     <main className="">
 
         <LeftSidebar />
-
-        {children}
+        <QueryProvider>
+          {children}
+        </QueryProvider>
 
         <RightSidebar />
 

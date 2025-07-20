@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers"
 import Header from "@/components/layout/SiteHeader";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider"
-
+import QueryProvider from "@/components/provdier/QueryProvider";
 
 import "@/styles/globals.css";
 
@@ -43,8 +42,10 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <div className="flex-1">
-              <Header />
-              {children}
+              <QueryProvider>
+                <Header />
+                {children}
+              </QueryProvider>
             </div>
           </ThemeProvider>
 

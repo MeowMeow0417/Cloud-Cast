@@ -52,7 +52,7 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData, variant }) => {
           </div>
 
           <div className="flex flex-col ">
-            <Label className={`${variant === 'floating' ? 'text-2xl' : 'text-5xl'} font-semibold padding`}>
+            <Label className={`${variant === 'floating' ? 'text-2xl' : 'text-5xl'} font-semibold padding text-start`}>
               {weatherData.location.name}
             </Label>
 
