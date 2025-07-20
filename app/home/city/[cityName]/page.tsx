@@ -1,60 +1,53 @@
-'use client';
+'use client'
 
-import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import WeatherStats from '@/components/custom/WeatherStats';
-import DailyForecast from '@/components/custom/DailyForecast';
-import FloatingWeatherCard from '@/components/motion/FloatingWeatherCard';
-import { notFound } from 'next/navigation';
+import { useParams } from 'next/navigation'
+import React from 'react'
+import WeatherStats from '@/components/custom/WeatherStats'
+import DailyForecast from '@/components/custom/DailyForecast'
+import FloatingWeatherCard from '@/components/motion/FloatingWeatherCard'
+import { useQuery } from '@tanstack/react-query'
+
+const fetchWeatherData = async (cityName: string) => {
+  const res = await fetch(`/api/getForecast?city=${cityName}`)
+  if (!res.ok) throw new Error('Failed to fetch weather data')
+  return res.json()
+}
 
 const CityPage = () => {
-  const params = useParams();
-  const cityName = params.cityName as string;
-  const [weatherData, setWeatherData] = useState<any | null>(null);
-  const [loading, setLoading] = useState(true);
+  const params = useParams()
+  const cityName = params.cityName as string
 
-  useEffect(() => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['weather', cityName],
+    queryFn: () => fetchWeatherData(cityName),
+    enabled: !!cityName, // Only runs if cityName exists
+  })
 
-    const fetchWeatherData = async () => {
-      try {
-        const res = await fetch(`/api/getCurrentWeather?city=${cityName}`);
-        if (!res.ok) throw new Error('Failed to fetch weather data');
-        const data = await res.json();
-        setWeatherData(data);
-      } catch (err) {
-        console.error(err);
-        notFound();
-      } finally {
-        setLoading(false);
-      }
-    };
+  if (isLoading) {
+    return <p className="text-center text-gray-500">Loading weather data...</p>
+  }
 
-    fetchWeatherData();
-  }, [cityName]);
-
+  if (isError || !data) {
+    return <p className="text-center text-red-500">Could not load weather data.</p>
+  }
 
   return (
-    <section className="flex flex-1 min-h-screen flex-col items-center justify-center ">
-      {!loading && weatherData ? (
-        <div>
-          <section id="forecast" className="snap-start h-screen" >
-              <FloatingWeatherCard weatherData={weatherData} />
-          </section>
-
-          <section id="daily" className="snap-center h-screen">
-            <DailyForecast />
-          </section>
-          <section id="stats" className="snap-end h-screen">
-            <WeatherStats />
+    <section className="flex flex-1 min-h-screen flex-col items-center justify-center">
+      <div>
+        <section id="forecast" className="snap-start h-screen">
+          <FloatingWeatherCard weatherData={data} />
         </section>
 
-        </div>
-      ) : (
-        <p className="text-center text-gray-500">Loading weather data...</p>
-      )}
-      {/* <pre>{JSON.stringify(weatherData, null, 2)}</pre> */}
-    </section>
-  );
-};
+        <section id="daily" className="snap-center h-screen">
+          <DailyForecast forecastData={data.forecast} />
+        </section>
 
-export default CityPage;
+        <section id="stats" className="snap-end h-screen">
+          <WeatherStats WeatherStats={data}/>
+        </section>
+      </div>
+    </section>
+  )
+}
+
+export default CityPage

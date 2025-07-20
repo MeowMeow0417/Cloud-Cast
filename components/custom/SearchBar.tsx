@@ -35,8 +35,6 @@ const SearchBar = ({show, onClose}: SearchBarProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const debouncedQuery = useDebounce(query.trim(), 400)
 
-
-
   // ✅ Query cities
   const { data: weatherData = [], isFetching } = useQuery({
     queryKey: ['search', debouncedQuery],
@@ -47,7 +45,6 @@ const SearchBar = ({show, onClose}: SearchBarProps) => {
       return res.json()
     }
   })
-
 
   // Close search bar when clicking outside
   useEffect(() => {
@@ -62,8 +59,6 @@ const SearchBar = ({show, onClose}: SearchBarProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [show, onClose]);
-
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
