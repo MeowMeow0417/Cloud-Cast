@@ -39,7 +39,7 @@ const WeatherCard: FC<WeatherCardProps> = ({ weatherData, variant }) => {
   }
 
   return (
-    <main className='flex items-center justify-center h-full min-h-screen w-full'>
+    <main className='flex items-center justify-center w-full'>
       <Card className={`w-full ${variant === 'floating' ? 'max-w-xl p-4' : 'max-w-5xl p-8 border-0'} shadow-lg`}>
         <CardContent className={`flex flex-row items-center text-center ${variant === 'floating' ? 'gap-4' : 'gap-20'}`}>
           <div className="flex flex-col items-center">

@@ -35,7 +35,9 @@ const CityPage = () => {
     <section className="flex flex-1 min-h-screen flex-col items-center justify-center">
       <div>
         <section id="forecast" className="snap-start h-screen">
-          <FloatingWeatherCard weatherData={data} />
+          <div className='h-full min-h-screen flex items-center justify-center'>
+            <FloatingWeatherCard weatherData={data} />
+          </div>
         </section>
 
         <section id="daily" className="snap-center h-screen">
