@@ -20,34 +20,36 @@ const CityPage = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['weather', cityName],
     queryFn: () => fetchWeatherData(cityName),
+    refetchInterval: 5 * 60 * 1000, // Refresh every 5 minutes
     enabled: !!cityName, // Only runs if cityName exists
   })
 
-  if (isLoading) {
-    return <p className="text-center text-gray-500">Loading weather data...</p>
-  }
-
-  if (isError || !data) {
-    return <p className="text-center text-red-500">Could not load weather data.</p>
-  }
 
   return (
     <section className="flex flex-1 min-h-screen flex-col items-center justify-center">
-      <div>
-        <section id="forecast" className="snap-start h-screen">
-          <div className='h-full min-h-screen flex items-center justify-center'>
-            <FloatingWeatherCard weatherData={data} />
-          </div>
-        </section>
+      {/* Loading and Error states */}
+      {isLoading ? (
+        <p className="text-center text-gray-500">Loading weather data...</p>
+      ) : isError || !data ? (
+        <p className="text-center text-red-500">Could not load weather data.</p>
+      ) : (
+        // Main content
+        <div>
+          <section id="forecast" className="snap-start h-screen">
+            <div className='h-full min-h-screen flex items-center justify-center'>
+              <FloatingWeatherCard weatherData={data} />
+            </div>
+          </section>
 
-        <section id="daily" className="snap-center h-screen">
-          <DailyForecast forecastData={data.forecast} />
-        </section>
+          <section id="daily" className="snap-center h-screen">
+            <DailyForecast forecastData={data.forecast} />
+          </section>
 
-        <section id="stats" className="snap-end h-screen">
-          <WeatherStats WeatherStats={data}/>
-        </section>
-      </div>
+          <section id="stats" className="snap-end h-screen">
+            <WeatherStats WeatherStats={data}/>
+          </section>
+        </div>
+      )}
     </section>
   )
 }

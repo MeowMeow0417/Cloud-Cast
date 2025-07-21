@@ -26,10 +26,11 @@ const WeatherStats: React.FC<WeatherStatsProps> = ({ WeatherStats }) => {
 
   // Essentials only
   const essentials = [
-    { icon: <Gauge className="w-6 h-6 text-blue-600" />, label: 'Pressure', value: `${current.pressure_mb} hPa` },
+    { icon: <Cloud className="w-6 h-6 text-blue-600" />, label: 'Cloudiness', value: `${current.cloud}%` },
     { icon: <Droplets className="w-6 h-6 text-blue-600" />, label: 'Humidity', value: `${current.humidity}%` },
+    { icon: <SunDim className="w-6 h-6 text-yellow-500" />, label: 'UV Index', value: `${current.uv}` },
     { icon: <Wind className="w-6 h-6 text-blue-600" />, label: 'Wind Speed', value: `${current.wind_kph} km/h` },
-    { icon: <Thermometer className="w-6 h-6 text-red-500" />, label: 'Feels Like', value: `${current.feelslike_c}°C` },
+    { icon: <CloudRain className="w-6 h-6 text-blue-600" />, label: 'Precipitation', value: `${current.precip_mm} mm` },
   ]
 
   // All grouped sections for dialog
@@ -81,26 +82,26 @@ const WeatherStats: React.FC<WeatherStatsProps> = ({ WeatherStats }) => {
   ] : []
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen w-full p-8 gap-12">
+    <main className="flex items-center justify-center h-full min-h-screen w-full p-12 gap-8">
       {/* Essentials */}
-      <section className="w-full max-w-5xl px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+      <section className="max-w-5xl p-4 mx-auto space-y-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {essentials.map(({ icon, label, value }) => (
             <Card key={label} className="rounded-xl border border-gray-200 hover:border-blue-400 transition shadow-sm hover:shadow-md">
               <CardContent className="flex flex-col items-center justify-center gap-3 py-6">
                 <div className="mb-1">{icon}</div>
                 <Label className="text-lg font-medium">{value}</Label>
-                <span className="text-xs text-gray-500">{label}</span>
+                <span className="text-xs text-muted-foreground">{label}</span>
               </CardContent>
             </Card>
           ))}
         </div>
-        <div className="text-center">
+        <div className="text-end">
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline">View Full Details</Button>
+              <Button variant="link">View Full Details</Button>
             </DialogTrigger>
-            <DialogContent className="w-full h-[500px] overflow-y-auto">
+            <DialogContent className="w-full h-4/5 overflow-y-auto">
               <DialogTitle>Full Weather Details</DialogTitle>
               <div className="space-y-10 mt-4">
                 {sections.map(({ title, stats }) => (
@@ -112,7 +113,7 @@ const WeatherStats: React.FC<WeatherStatsProps> = ({ WeatherStats }) => {
                           <CardContent className="flex flex-col items-center justify-center gap-3 py-6">
                             <div className="mb-1">{icon}</div>
                             <Label className="text-base font-medium">{value}</Label>
-                            <span className="text-xs text-gray-500">{label}</span>
+                            <span className="text-xs text-muted-foreground">{label}</span>
                           </CardContent>
                         </Card>
                       ))}
@@ -122,13 +123,13 @@ const WeatherStats: React.FC<WeatherStatsProps> = ({ WeatherStats }) => {
                 {airQuality.length > 0 && (
                   <div>
                     <h3 className="text-lg font-bold mb-4">Air Quality</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                       {airQuality.map(({ icon, label, value }) => (
                         <Card key={label} className="rounded-xl border border-gray-200">
                           <CardContent className="flex flex-col items-center justify-center gap-3 py-6">
                             <div className="mb-1">{icon}</div>
                             <Label className="text-base font-medium">{value}</Label>
-                            <span className="text-xs text-gray-500">{label}</span>
+                            <span className="text-xs text-muted-foreground">{label}</span>
                           </CardContent>
                         </Card>
                       ))}
